@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.mycompany</groupId>
+    <artifactId>Calidad-Maven</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <aspectj.version>1.9.20.1</aspectj.version> <!-- Asegúrate de usar la versión compatible con tu proyecto -->
+        <allure.version>2.10.0</allure.version> <!-- Unificar la versión de Allure -->
+        <jacoco.version>0.8.11</jacoco.version> <!-- Asegúrate de usar la última versión de JaCoCo -->
+        <exec.mainClass>com.mycompany.calidad.maven.CalidadMaven</exec.mainClass>
+    </properties>
+
+    <dependencies>
+         <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-cucumber7-jvm</artifactId>
+            <version>2.24.0</version> <!-- Asegúrate de usar la última versión disponible -->
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+    <groupId>io.qameta.allure</groupId>
+    <artifactId>allure-junit-platform</artifactId>
+    <version>2.24.0</version>
+</dependency>
+
+    <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.14.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>7.3.3</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- MySQL JDBC Driver -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.27</version>
+        </dependency>
+
+        <!-- Mockito for mocking in tests -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>4.2.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- JUnit Jupiter API for writing tests -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.9.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- JUnit Jupiter Engine for running tests -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.9.0</version>
+            <scope>test</scope>
+        </dependency>
+         
+    <dependency>
+        <groupId>net.masterthought</groupId>
+        <artifactId>cucumber-reporting</artifactId>
+        <version>5.7.7</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <version>3.11.0</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>3.2.2</version>
+</dependency>
+    </dependencies>
+   
+<build>
+        <plugins>
+            <!-- Configuración del plugin JaCoCo -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.reporting.outputDirectory}/jacoco</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Configuración del plugin de Allure -->
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-allure-report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>serve</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Surefire Plugin configuración actualizada para incluir argLine para JaCoCo -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.1</version>
+                <configuration>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                        ${argLine} <!-- Añade esto para JaCoCo -->
+                    </argLine>
+                    <systemPropertyVariables>
+                        <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
+                    </systemPropertyVariables>
+                    <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

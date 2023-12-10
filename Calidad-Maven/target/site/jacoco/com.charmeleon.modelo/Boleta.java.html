@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Boleta.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Calidad-Maven</a> &gt; <a href="index.source.html" class="el_package">com.charmeleon.modelo</a> &gt; <span class="el_source">Boleta.java</span></div><h1>Boleta.java</h1><pre class="source lang-java linenums">/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.charmeleon.modelo;
+
+import java.util.Date;
+
+/**
+ *
+ * @author PC
+ */
+public class Boleta {
+    int NBoleta;
+    String Cliente;
+    int  Dni;
+    Date FechaE;
+    String Hora;
+
+<span class="fc" id="L20">    public Boleta() {</span>
+<span class="fc" id="L21">    }</span>
+
+<span class="nc" id="L23">    public Boleta(int NBoleta, String Cliente, int Dni, Date FechaE, String Hora) {</span>
+<span class="nc" id="L24">        this.NBoleta = NBoleta;</span>
+<span class="nc" id="L25">        this.Cliente = Cliente;</span>
+<span class="nc" id="L26">        this.Dni = Dni;</span>
+<span class="nc" id="L27">        this.FechaE = FechaE;</span>
+<span class="nc" id="L28">        this.Hora = Hora;</span>
+<span class="nc" id="L29">    }</span>
+
+    public int getNBoleta() {
+<span class="fc" id="L32">        return NBoleta;</span>
+    }
+
+    public void setNBoleta(int NBoleta) {
+<span class="fc" id="L36">        this.NBoleta = NBoleta;</span>
+<span class="fc" id="L37">    }</span>
+
+    public String getCliente() {
+<span class="fc" id="L40">        return Cliente;</span>
+    }
+
+    public void setCliente(String Cliente) {
+<span class="fc" id="L44">        this.Cliente = Cliente;</span>
+<span class="fc" id="L45">    }</span>
+
+    public int getDni() {
+<span class="fc" id="L48">        return Dni;</span>
+    }
+
+    public void setDni(int Dni) {
+<span class="fc" id="L52">        this.Dni = Dni;</span>
+<span class="fc" id="L53">    }</span>
+
+    public Date getFechaE() {
+<span class="fc" id="L56">        return FechaE;</span>
+    }
+
+    public void setFechaE(Date FechaE) {
+<span class="fc" id="L60">        this.FechaE = FechaE;</span>
+<span class="fc" id="L61">    }</span>
+
+    public String getHora() {
+<span class="fc" id="L64">        return Hora;</span>
+    }
+
+    public void setHora(String Hora) {
+<span class="fc" id="L68">        this.Hora = Hora;</span>
+<span class="fc" id="L69">    }</span>
+
+    
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

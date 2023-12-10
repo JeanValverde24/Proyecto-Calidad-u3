@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Productos.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Calidad-Maven</a> &gt; <a href="index.source.html" class="el_package">com.charmeleon.modelo</a> &gt; <span class="el_source">Productos.java</span></div><h1>Productos.java</h1><pre class="source lang-java linenums">/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.charmeleon.modelo;
+
+import javax.swing.JButton;
+
+/**
+ *
+ * @author PC
+ */
+public class Productos {
+     int id;
+    String Nombre;
+    String Descripcion;
+    Double Precio;
+    int Cantidad;
+    String Categoria;
+    private JButton botonModificar;
+    private JButton botonEliminar;
+    private JButton botonDetalles;
+
+    public int getId() {
+<span class="fc" id="L25">        return id;</span>
+    }
+
+    public void setId(int id) {
+<span class="fc" id="L29">        this.id = id;</span>
+<span class="fc" id="L30">    }</span>
+
+    public String getNombre() {
+<span class="fc" id="L33">        return Nombre;</span>
+    }
+
+    public void setNombre(String Nombre) {
+<span class="fc" id="L37">        this.Nombre = Nombre;</span>
+<span class="fc" id="L38">    }</span>
+
+    public String getDescripcion() {
+<span class="fc" id="L41">        return Descripcion;</span>
+    }
+
+    public void setDescripcion(String Descripcion) {
+<span class="fc" id="L45">        this.Descripcion = Descripcion;</span>
+<span class="fc" id="L46">    }</span>
+
+    public Double getPrecio() {
+<span class="fc" id="L49">        return Precio;</span>
+    }
+
+    public void setPrecio(Double Precio) {
+<span class="fc" id="L53">        this.Precio = Precio;</span>
+<span class="fc" id="L54">    }</span>
+
+    public int getCantidad() {
+<span class="fc" id="L57">        return Cantidad;</span>
+    }
+
+    public void setCantidad(int Cantidad) {
+<span class="fc" id="L61">        this.Cantidad = Cantidad;</span>
+<span class="fc" id="L62">    }</span>
+
+    public String getCategoria() {
+<span class="fc" id="L65">        return Categoria;</span>
+    }
+
+    public void setCategoria(String Categoria) {
+<span class="fc" id="L69">        this.Categoria = Categoria;</span>
+<span class="fc" id="L70">    }</span>
+
+    public JButton getBotonModificar() {
+<span class="nc" id="L73">        return botonModificar;</span>
+    }
+
+    public void setBotonModificar(JButton botonModificar) {
+<span class="nc" id="L77">        this.botonModificar = botonModificar;</span>
+<span class="nc" id="L78">    }</span>
+
+    public JButton getBotonEliminar() {
+<span class="nc" id="L81">        return botonEliminar;</span>
+    }
+
+    public void setBotonEliminar(JButton botonEliminar) {
+<span class="nc" id="L85">        this.botonEliminar = botonEliminar;</span>
+<span class="nc" id="L86">    }</span>
+
+    public JButton getBotonDetalles() {
+<span class="nc" id="L89">        return botonDetalles;</span>
+    }
+
+    public void setBotonDetalles(JButton botonDetalles) {
+<span class="nc" id="L93">        this.botonDetalles = botonDetalles;</span>
+<span class="nc" id="L94">    }</span>
+
+<span class="fc" id="L96">    public Productos() {</span>
+<span class="fc" id="L97">    }</span>
+
+<span class="nc" id="L99">    public Productos(int id, String Nombre, String Descripcion, Double Precio, int Cantidad, String Categoria, JButton botonModificar, JButton botonEliminar, JButton botonDetalles) {</span>
+<span class="nc" id="L100">        this.id = id;</span>
+<span class="nc" id="L101">        this.Nombre = Nombre;</span>
+<span class="nc" id="L102">        this.Descripcion = Descripcion;</span>
+<span class="nc" id="L103">        this.Precio = Precio;</span>
+<span class="nc" id="L104">        this.Cantidad = Cantidad;</span>
+<span class="nc" id="L105">        this.Categoria = Categoria;</span>
+<span class="nc" id="L106">        this.botonModificar = botonModificar;</span>
+<span class="nc" id="L107">        this.botonEliminar = botonEliminar;</span>
+<span class="nc" id="L108">        this.botonDetalles = botonDetalles;</span>
+<span class="nc" id="L109">    }</span>
+
+   
+    
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BoletaDAO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Calidad-Maven</a> &gt; <a href="index.source.html" class="el_package">com.charmeleon.modeloDAO</a> &gt; <span class="el_source">BoletaDAO.java</span></div><h1>BoletaDAO.java</h1><pre class="source lang-java linenums">package com.charmeleon.modeloDAO;
+
+import com.charmeleon.modelo.Boleta;
+import com.charmeleon.modelo.BoletaDetalle;
+import com.charmeleon.modelo.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class BoletaDAO {
+    private final Conexion conectar;
+
+<span class="fc" id="L16">    public BoletaDAO(Conexion conectar) {</span>
+<span class="fc" id="L17">        this.conectar = conectar;</span>
+<span class="fc" id="L18">    }</span>
+
+    public List&lt;Boleta&gt; listarBoletas() {
+<span class="fc" id="L21">        List&lt;Boleta&gt; datos = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L22">        String sql = &quot;SELECT NBoleta, Cliente, Dni, FechaE, Hora FROM tbboleta&quot;;</span>
+<span class="fc" id="L23">        try (Connection connection = conectar.getConnection();</span>
+<span class="fc" id="L24">                PreparedStatement preparedStatement = connection.prepareStatement(sql);</span>
+<span class="fc" id="L25">                ResultSet resultSet = preparedStatement.executeQuery()) {</span>
+
+<span class="fc bfc" id="L27" title="All 2 branches covered.">            while (resultSet.next()) {</span>
+<span class="fc" id="L28">                Boleta boleta = new Boleta();</span>
+<span class="fc" id="L29">                boleta.setNBoleta(resultSet.getInt(&quot;NBoleta&quot;));</span>
+<span class="fc" id="L30">                boleta.setCliente(resultSet.getString(&quot;Cliente&quot;));</span>
+<span class="fc" id="L31">                boleta.setDni(resultSet.getInt(&quot;Dni&quot;));</span>
+<span class="fc" id="L32">                boleta.setFechaE(resultSet.getDate(&quot;FechaE&quot;));</span>
+<span class="fc" id="L33">                boleta.setHora(resultSet.getString(&quot;Hora&quot;));</span>
+<span class="fc" id="L34">                datos.add(boleta);</span>
+<span class="fc" id="L35">            }</span>
+<span class="nc" id="L36">        } catch (SQLException e) {</span>
+<span class="nc" id="L37">            e.printStackTrace();</span>
+<span class="fc" id="L38">        }</span>
+<span class="fc" id="L39">        return datos;</span>
+    }
+
+    public int agregarBoleta(Boleta boleta) {
+<span class="fc" id="L43">        int resultado = 0;</span>
+<span class="fc" id="L44">        String sql = &quot;INSERT INTO tbboleta (NBoleta, Cliente, Dni, FechaE, Hora) VALUES (?, ?, ?, ?, ?)&quot;;</span>
+<span class="fc" id="L45">        try (Connection connection = conectar.getConnection();</span>
+<span class="fc" id="L46">                PreparedStatement preparedStatement = connection.prepareStatement(sql)) {</span>
+
+<span class="fc" id="L48">            preparedStatement.setInt(1, boleta.getNBoleta());</span>
+<span class="fc" id="L49">            preparedStatement.setString(2, boleta.getCliente());</span>
+<span class="fc" id="L50">            preparedStatement.setInt(3, boleta.getDni());</span>
+<span class="fc" id="L51">            preparedStatement.setDate(4, new java.sql.Date(boleta.getFechaE().getTime()));</span>
+<span class="fc" id="L52">            preparedStatement.setString(5, boleta.getHora());</span>
+
+<span class="fc" id="L54">            resultado = preparedStatement.executeUpdate();</span>
+<span class="nc" id="L55">        } catch (SQLException e) {</span>
+<span class="nc" id="L56">            e.printStackTrace();</span>
+<span class="fc" id="L57">        }</span>
+<span class="fc" id="L58">        return resultado;</span>
+    }
+
+    public int eliminarBoleta(int NBoleta) {
+<span class="fc" id="L62">        int resultado = 0;</span>
+<span class="fc" id="L63">        String sql = &quot;DELETE FROM tbboleta WHERE NBoleta = ?&quot;;</span>
+<span class="fc" id="L64">        try (Connection connection = conectar.getConnection();</span>
+<span class="fc" id="L65">                PreparedStatement preparedStatement = connection.prepareStatement(sql)) {</span>
+
+<span class="fc" id="L67">            preparedStatement.setInt(1, NBoleta);</span>
+<span class="fc" id="L68">            resultado = preparedStatement.executeUpdate();</span>
+<span class="nc" id="L69">        } catch (SQLException e) {</span>
+<span class="nc" id="L70">            e.printStackTrace();</span>
+<span class="fc" id="L71">        }</span>
+<span class="fc" id="L72">        return resultado;</span>
+    }
+
+    public Boleta obtenerBoletaPorNBoleta(int NBoleta) {
+<span class="fc" id="L76">        Boleta boleta = null;</span>
+<span class="fc" id="L77">        String sql = &quot;SELECT NBoleta, Cliente, Dni, FechaE, Hora FROM tbboleta WHERE NBoleta = ?&quot;;</span>
+<span class="fc" id="L78">        try (Connection connection = conectar.getConnection();</span>
+<span class="fc" id="L79">                PreparedStatement preparedStatement = connection.prepareStatement(sql)) {</span>
+
+<span class="fc" id="L81">            preparedStatement.setInt(1, NBoleta);</span>
+<span class="fc" id="L82">            try (ResultSet resultSet = preparedStatement.executeQuery()) {</span>
+<span class="pc bpc" id="L83" title="1 of 2 branches missed.">                if (resultSet.next()) {</span>
+<span class="fc" id="L84">                    boleta = new Boleta();</span>
+<span class="fc" id="L85">                    boleta.setNBoleta(resultSet.getInt(&quot;NBoleta&quot;));</span>
+<span class="fc" id="L86">                    boleta.setCliente(resultSet.getString(&quot;Cliente&quot;));</span>
+<span class="fc" id="L87">                    boleta.setDni(resultSet.getInt(&quot;Dni&quot;));</span>
+<span class="fc" id="L88">                    boleta.setFechaE(resultSet.getDate(&quot;FechaE&quot;));</span>
+<span class="fc" id="L89">                    boleta.setHora(resultSet.getString(&quot;Hora&quot;));</span>
+                }
+            }
+<span class="nc" id="L92">        } catch (SQLException e) {</span>
+<span class="nc" id="L93">            e.printStackTrace();</span>
+<span class="fc" id="L94">        }</span>
+<span class="fc" id="L95">        return boleta;</span>
+    }
+
+    public void insertarBoletaDetalle(BoletaDetalle boletaDetalle) {
+<span class="fc" id="L99">        String sql = &quot;INSERT INTO tbboletadetalle (Producto, Descripcion, Cantidad, Moneda, Precio, Subtotal, Total, fkboleta) VALUES (?, ?, ?, ?, ?, ?, ?, ?)&quot;;</span>
+<span class="fc" id="L100">        try (Connection connection = conectar.getConnection();</span>
+<span class="fc" id="L101">                PreparedStatement preparedStatement = connection.prepareStatement(sql)) {</span>
+
+<span class="fc" id="L103">            preparedStatement.setInt(1, boletaDetalle.getProducto());</span>
+<span class="fc" id="L104">            preparedStatement.setString(2, boletaDetalle.getDescripcion());</span>
+<span class="fc" id="L105">            preparedStatement.setInt(3, boletaDetalle.getCantidad());</span>
+<span class="fc" id="L106">            preparedStatement.setString(4, boletaDetalle.getMoneda());</span>
+<span class="fc" id="L107">            preparedStatement.setDouble(5, boletaDetalle.getPrecio());</span>
+<span class="fc" id="L108">            preparedStatement.setDouble(6, boletaDetalle.getSubtotal());</span>
+<span class="fc" id="L109">            preparedStatement.setDouble(7, boletaDetalle.getTotal());</span>
+<span class="fc" id="L110">            preparedStatement.setInt(8, boletaDetalle.getFkboelta());</span>
+
+<span class="fc" id="L112">            preparedStatement.executeUpdate();</span>
+<span class="nc" id="L113">        } catch (SQLException e) {</span>
+<span class="nc" id="L114">            e.printStackTrace();</span>
+<span class="fc" id="L115">        }</span>
+<span class="fc" id="L116">    }</span>
+
+    public int actualizarBoleta(Boleta boleta) {
+<span class="fc" id="L119">        int resultado = 0;</span>
+<span class="fc" id="L120">        String sql = &quot;UPDATE tbboleta SET Cliente = ?, Dni = ?, FechaE = ?, Hora = ? WHERE NBoleta = ?&quot;;</span>
+<span class="fc" id="L121">        try (Connection connection = conectar.getConnection();</span>
+<span class="fc" id="L122">                PreparedStatement preparedStatement = connection.prepareStatement(sql)) {</span>
+
+<span class="fc" id="L124">            preparedStatement.setString(1, boleta.getCliente());</span>
+<span class="fc" id="L125">            preparedStatement.setInt(2, boleta.getDni());</span>
+<span class="fc" id="L126">            preparedStatement.setDate(3, new java.sql.Date(boleta.getFechaE().getTime()));</span>
+<span class="fc" id="L127">            preparedStatement.setString(4, boleta.getHora());</span>
+<span class="fc" id="L128">            preparedStatement.setInt(5, boleta.getNBoleta());</span>
+
+<span class="fc" id="L130">            resultado = preparedStatement.executeUpdate();</span>
+<span class="nc" id="L131">        } catch (SQLException e) {</span>
+<span class="nc" id="L132">            e.printStackTrace();</span>
+<span class="fc" id="L133">        }</span>
+<span class="fc" id="L134">        return resultado;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

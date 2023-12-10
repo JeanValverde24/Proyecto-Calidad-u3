@@ -1,0 +1,10 @@
+com\charmeleon\modelo\Cargo.class
+com\charmeleon\modeloDAO\CargoDAO.class
+com\charmeleon\modelo\Boleta.class
+com\charmeleon\modeloDAO\BoletaDAO.class
+com\charmeleon\modeloDAO\ProductosDAO.class
+com\charmeleon\modelo\BoletaDetalle.class
+com\charmeleon\modelo\Productos.class
+com\charmeleon\modelo\Persona.class
+com\charmeleon\modelo\Conexion.class
+com\charmeleon\modeloDAO\PersonaDAO.class

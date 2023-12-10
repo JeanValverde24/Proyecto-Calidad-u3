@@ -1,0 +1,8 @@
+com\charmeleon\modeloDAO\steps\CargoSteps.class
+com\charmeleon\modeloDAO\CargoDAOTest.class
+com\charmeleon\modeloDAO\steps\BoletaSteps.class
+com\charmeleon\modeloDAO\steps\ProductosSteps.class
+com\charmeleon\modeloDAO\steps\PersonaSteps.class
+com\charmeleon\modeloDAO\PersonaDAOTest.class
+com\charmeleon\modeloDAO\BoletaDAOTest.class
+com\charmeleon\modeloDAO\ProductosDAOTest.class

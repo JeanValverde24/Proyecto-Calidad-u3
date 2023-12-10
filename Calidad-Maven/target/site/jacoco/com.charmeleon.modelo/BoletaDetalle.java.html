@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BoletaDetalle.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Calidad-Maven</a> &gt; <a href="index.source.html" class="el_package">com.charmeleon.modelo</a> &gt; <span class="el_source">BoletaDetalle.java</span></div><h1>BoletaDetalle.java</h1><pre class="source lang-java linenums">/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.charmeleon.modelo;
+
+/**
+ *
+ * @author PC
+ */
+public class BoletaDetalle {
+    int Id;
+    int Producto;
+    String Descripcion;
+    int Cantidad;
+    String Moneda;
+    Double Subtotal;
+    Double Precio;
+    Double Total;
+    int fkboelta;
+
+<span class="fc" id="L22">    public BoletaDetalle() {</span>
+<span class="fc" id="L23">    }</span>
+
+<span class="nc" id="L25">    public BoletaDetalle(int Id, int Producto, String Descripcion, int Cantidad, String Moneda, Double Subtotal, Double Precio, Double Total, int fkboelta) {</span>
+<span class="nc" id="L26">        this.Id = Id;</span>
+<span class="nc" id="L27">        this.Producto = Producto;</span>
+<span class="nc" id="L28">        this.Descripcion = Descripcion;</span>
+<span class="nc" id="L29">        this.Cantidad = Cantidad;</span>
+<span class="nc" id="L30">        this.Moneda = Moneda;</span>
+<span class="nc" id="L31">        this.Subtotal = Subtotal;</span>
+<span class="nc" id="L32">        this.Precio = Precio;</span>
+<span class="nc" id="L33">        this.Total = Total;</span>
+<span class="nc" id="L34">        this.fkboelta = fkboelta;</span>
+<span class="nc" id="L35">    }</span>
+
+    public int getId() {
+<span class="nc" id="L38">        return Id;</span>
+    }
+
+    public void setId(int Id) {
+<span class="nc" id="L42">        this.Id = Id;</span>
+<span class="nc" id="L43">    }</span>
+
+    public int getProducto() {
+<span class="fc" id="L46">        return Producto;</span>
+    }
+
+    public void setProducto(int Producto) {
+<span class="fc" id="L50">        this.Producto = Producto;</span>
+<span class="fc" id="L51">    }</span>
+
+    public String getDescripcion() {
+<span class="fc" id="L54">        return Descripcion;</span>
+    }
+
+    public void setDescripcion(String Descripcion) {
+<span class="fc" id="L58">        this.Descripcion = Descripcion;</span>
+<span class="fc" id="L59">    }</span>
+
+    public int getCantidad() {
+<span class="fc" id="L62">        return Cantidad;</span>
+    }
+
+    public void setCantidad(int Cantidad) {
+<span class="fc" id="L66">        this.Cantidad = Cantidad;</span>
+<span class="fc" id="L67">    }</span>
+
+    public String getMoneda() {
+<span class="fc" id="L70">        return Moneda;</span>
+    }
+
+    public void setMoneda(String Moneda) {
+<span class="fc" id="L74">        this.Moneda = Moneda;</span>
+<span class="fc" id="L75">    }</span>
+
+    public Double getSubtotal() {
+<span class="fc" id="L78">        return Subtotal;</span>
+    }
+
+    public void setSubtotal(Double Subtotal) {
+<span class="fc" id="L82">        this.Subtotal = Subtotal;</span>
+<span class="fc" id="L83">    }</span>
+
+    public Double getPrecio() {
+<span class="fc" id="L86">        return Precio;</span>
+    }
+
+    public void setPrecio(Double Precio) {
+<span class="fc" id="L90">        this.Precio = Precio;</span>
+<span class="fc" id="L91">    }</span>
+
+    public Double getTotal() {
+<span class="fc" id="L94">        return Total;</span>
+    }
+
+    public void setTotal(Double Total) {
+<span class="fc" id="L98">        this.Total = Total;</span>
+<span class="fc" id="L99">    }</span>
+
+    public int getFkboelta() {
+<span class="fc" id="L102">        return fkboelta;</span>
+    }
+
+    public void setFkboelta(int fkboelta) {
+<span class="fc" id="L106">        this.fkboelta = fkboelta;</span>
+<span class="fc" id="L107">    }</span>
+    
+
+   
+   
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

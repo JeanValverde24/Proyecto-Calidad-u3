@@ -1,0 +1,11 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Calidad-Maven,com.charmeleon.modelo,Conexion,22,12,0,0,6,4,2,1,2,1
+Calidad-Maven,com.charmeleon.modelo,Boleta,18,38,0,0,7,17,1,11,1,11
+Calidad-Maven,com.charmeleon.modelo,Productos,51,45,0,0,20,20,7,13,7,13
+Calidad-Maven,com.charmeleon.modelo,Cargo,12,24,0,0,5,11,1,7,1,7
+Calidad-Maven,com.charmeleon.modelo,Persona,18,38,0,0,7,17,1,11,1,11
+Calidad-Maven,com.charmeleon.modelo,BoletaDetalle,37,59,0,0,14,26,3,17,3,17
+Calidad-Maven,com.charmeleon.modeloDAO,BoletaDAO,18,291,1,3,12,80,1,8,0,7
+Calidad-Maven,com.charmeleon.modeloDAO,PersonaDAO,2,305,13,19,2,82,13,9,0,6
+Calidad-Maven,com.charmeleon.modeloDAO,CargoDAO,9,262,2,8,6,73,2,10,0,7
+Calidad-Maven,com.charmeleon.modeloDAO,ProductosDAO,86,326,3,13,26,88,4,13,1,8
