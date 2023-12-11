@@ -31,16 +31,12 @@ jobs:
     - name: Build with Maven and enable debug
       run: mvn -B -e -U clean verify --file Calidad-Maven/pom.xml
 
-    # This step generates the Allure report without trying to serve it.
-    - name: Generate Allure report
-      run: mvn allure:generate -f Calidad-Maven/pom.xml
-
-    # This step archives the generated Allure report.
-    - name: Archive Allure Report
+    # This step archives the JaCoCo report generated during the Maven build.
+    - name: Archive JaCoCo Coverage Report
       uses: actions/upload-artifact@v3
       with:
-        name: allure-report
-        path: Calidad-Maven/target/site/allure-maven-plugin
+        name: jacoco-report
+        path: Calidad-Maven/target/site/jacoco/
 
 
 
