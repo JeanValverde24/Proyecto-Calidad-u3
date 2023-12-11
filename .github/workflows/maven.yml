@@ -31,21 +31,13 @@ jobs:
     - name: Build with Maven and enable debug
       run: mvn -B -e -U clean verify --file Calidad-Maven/pom.xml
 
-    - name: Publish JaCoCo Coverage Report
-      if: success() || failure() # This ensures that artifacts are uploaded even if the build fails
-      uses: actions/upload-artifact@v3
-      with:
-        name: jacoco-report
-        path: Calidad-Maven/target/site/jacoco/
-
     - name: Generate Allure report
-      if: success() # This step will run only if the build succeeds
       run: mvn allure:report -f Calidad-Maven/pom.xml
 
-    - name: Publish Allure Report
-      if: success() # This step will run only if the build succeeds
+    - name: Archive Allure Report
       uses: actions/upload-artifact@v3
       with:
         name: allure-report
         path: Calidad-Maven/target/site/allure-maven-plugin
+
 
