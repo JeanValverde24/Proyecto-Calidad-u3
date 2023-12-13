@@ -31,24 +31,24 @@ jobs:
     - name: Build and Test with Maven
       run: mvn -B clean verify --file Calidad-Maven/pom.xml
 
-    - name: Generate JaCoCo Report
-      run: mvn jacoco:report --file Calidad-Maven/pom.xml
+    - name: Archive Allure Results
+      uses: actions/upload-artifact@v3
+      with:
+        name: allure-results
+        path: Calidad-Maven/target/allure-results
 
     - name: Archive JaCoCo Results
       uses: actions/upload-artifact@v3
       with:
         name: jacoco-report
-        path: Calidad-Maven/target/site/jacoco/
+        path: Calidad-Maven/target/site/jacoco
 
-    # Allure report generation is already configured in the pom.xml, so no additional step is required.
-    - name: Archive Allure Results
-      uses: actions/upload-artifact@v3
+    - name: Deploy to GitHub Pages
+      if: github.ref == 'refs/heads/main'
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        name: allure-report
-        path: Calidad-Maven/target/site/allure-maven-plugin/
-
-    # This step can be used if you want to deploy your Allure reports to GitHub Pages.
-    # It requires that the peaceiris/actions-gh-pages action is correctly
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./Calidad-Maven/target/site/allure-maven-plugin/
 
 
 
