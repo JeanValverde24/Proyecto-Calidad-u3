@@ -29,19 +29,20 @@ jobs:
         cache: maven
 
     - name: Build and Test with Maven
-      run: mvn -B clean verify --file Proyecto-Calidad-u3/Calidad-Maven/pom.xml
+      run: mvn -B clean verify --file Calidad-Maven/pom.xml
 
     - name: Archive JaCoCo Coverage Report
       uses: actions/upload-artifact@v3
       with:
         name: jacoco-report
-        path: Proyecto-Calidad-u3/Calidad-Maven/target/site/jacoco/
+        path: Calidad-Maven/target/site/jacoco/
 
     - name: Archive Allure Report
       uses: actions/upload-artifact@v3
       with:
         name: allure-report
-        path: Proyecto-Calidad-u3/Calidad-Maven/target/site/allure-maven-plugin/
+        path: Calidad-Maven/target/site/allure-maven-plugin/
+
 
 
 
