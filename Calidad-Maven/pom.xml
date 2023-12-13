@@ -13,7 +13,7 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <aspectj.version>1.9.20.1</aspectj.version> <!-- Asegúrate de usar la versión compatible con tu proyecto -->
-        <allure.version>2.10.0</allure.version> <!-- Unificar la versión de Allure -->
+        <allure.version>2.12.0</allure.version> <!-- Unificar la versión de Allure -->
         <jacoco.version>0.8.11</jacoco.version> <!-- Asegúrate de usar la última versión de JaCoCo -->
         <exec.mainClass>com.mycompany.calidad.maven.CalidadMaven</exec.mainClass>
     </properties>
@@ -91,12 +91,6 @@
     <artifactId>maven-surefire-plugin</artifactId>
     <version>3.2.2</version>
 </dependency>
-             <dependency>
-    <groupId>org.aspectj</groupId>
-    <artifactId>aspectjweaver</artifactId>
-    <version>1.9.20.1</version>
-</dependency>
-
     </dependencies>
    
 <build>
@@ -133,29 +127,33 @@
                 <version>${allure.version}</version>
                 <executions>
                     <execution>
-                        <id>generate-allure-report</id>
-                        <phase>test</phase>
+                        <id>allure-report</id>
+                        <phase>post-integration-test</phase>
                         <goals>
-                            <goal>serve</goal>
+                            <goal>report</goal>
                         </goals>
+                        <configuration>
+                            <reportVersion>${allure.version}</reportVersion>
+                            <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
+                            <reportDirectory>${project.build.directory}/allure-report</reportDirectory>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
 
             <!-- Surefire Plugin configuración actualizada para incluir argLine para JaCoCo -->
-            <plugin>
+          <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.1</version>
+                <version>3.2.2</version>
                 <configuration>
-                    <argLine>
-                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-                        ${argLine} <!-- Añade esto para JaCoCo -->
-                    </argLine>
+                    <includes>
+                        <include>**/*Test.java</include>
+                        <include>**/*Tests.java</include>
+                    </includes>
                     <systemPropertyVariables>
                         <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
                     </systemPropertyVariables>
-                    <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
         </plugins>
