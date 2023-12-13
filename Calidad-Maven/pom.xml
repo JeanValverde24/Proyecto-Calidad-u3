@@ -102,13 +102,13 @@
     <artifactId>maven-surefire-plugin</artifactId>
     <version>3.2.2</version>
 </dependency>
-    </dependencies>
-   <dependency>
+             <dependency>
     <groupId>org.aspectj</groupId>
     <artifactId>aspectjweaver</artifactId>
     <version>1.9.21</version>
    </dependencies>
 </dependency>
+    </dependencies>
 
 <build>
         <plugins>
