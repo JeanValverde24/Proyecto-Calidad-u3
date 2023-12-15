@@ -40,31 +40,35 @@ jobs:
     - name: Generamos el reporte de allure
       run: mvn allure:report --file Calidad-Maven/pom.xml
 
-    - name: Script para el servidor
+    - name: Crear script de servidor para Windows
       run: |
-        echo '@echo off' > start_server.bat
-        echo 'cd /d %~dp0' >> start_server.bat
-        echo 'python -m http.server' >> start_server.bat
-        echo 'echo.' >> start_server.bat
-        echo 'echo Visit http://localhost:8000 to view the Allure report' >> start_server.bat
-        echo 'echo.' >> start_server.bat
-        echo 'pause' >> start_server.bat
+        echo '@echo off' > iniciar_servidor.bat
+        echo 'cd /d %~dp0' >> iniciar_servidor.bat
+        echo 'python -m http.server' >> iniciar_servidor.bat
+        echo 'echo.' >> iniciar_servidor.bat
+        echo 'echo Visite http://localhost:8000 para ver el reporte de Allure' >> iniciar_servidor.bat
+        echo 'echo.' >> iniciar_servidor.bat
+        echo 'pause' >> iniciar_servidor.bat
+
+    - name: Crear instrucciones para los usuarios
+      run: |
+        echo 'Instrucciones para visualizar el Reporte de Allure:' > INSTRUCCIONES.txt
+        echo '1. Asegurarse de que Python esté instalado y agregado a las variables de entorno PATH.' >> INSTRUCCIONES.txt
+        echo '2. Descomprimir el archivo ZIP.' >> INSTRUCCIONES.txt
+        echo '3. Ejecutar el archivo iniciar_servidor.bat haciendo doble clic en él.' >> INSTRUCCIONES.txt
+        echo '4. Pegar eb el navegadir la ruta http://localhost:8000.' >> INSTRUCCIONES.txt
+        echo '5. Para detener el servidor, cierre la ventana del símbolo del sistema.' >> INSTRUCCIONES.txt
+
+    - name: Archivar Reporte de Allure con script de servidor e instrucciones
+      run: |
+        zip -r reporte-allure-final.zip Calidad-Maven/target/site/allure-maven-plugin iniciar_servidor.bat INSTRUCCIONES.txt
       shell: bash
 
-    - name: Instrucciones para los usuarios
-      run: |
-        echo 'Instrucciones para ver el reporte localmente:' > INSTRUCTIONS.txt
-        echo '1. Asegurarse de que python esta isntalado y agregado a las variables de entorno.' >> INSTRUCTIONS.txt
-        echo '2. Descomprimir allure-report-windows.zip file.' >> INSTRUCTIONS.txt
-        echo '3. Iniciar el archivo start_server.bat haciendo dos veces click izquierdo.' >> INSTRUCTIONS.txt
-        echo '4. Abrir el navegador y pegar la siguiente ruta http://localhost:8000.' >> INSTRUCTIONS.txt
-        echo '5. Para detener el servidor, cerramos el promt del comando de windows.' >> INSTRUCTIONS.txt
-      shell: bash
-
-    - name: Reporte de allure en zip con el script y las instrucciones
-      run: |
-        zip -r allure-report-windows.zip Calidad-Maven/target/site/allure-maven-plugin start_server.bat INSTRUCTIONS.txt
-      shell: bash
+    - name: Subir Reporte de Allure como artefacto
+      uses: actions/upload-artifact@v3
+      with:
+        name: reporte-allure-final
+        path: reporte-allure-final.zip
 
 
 
