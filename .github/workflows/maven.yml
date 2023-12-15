@@ -66,11 +66,7 @@ jobs:
         zip -r allure-report-windows.zip Calidad-Maven/target/site/allure-maven-plugin start_server.bat INSTRUCTIONS.txt
       shell: bash
 
-    - name: Reporte de allure comprimido con el script y las instrucciones
-      uses: actions/upload-artifact@v3
-      with:
-        name: allure-report-windows
-        path: allure-report-windows.zip
+
 
 
     
