@@ -59,12 +59,12 @@ jobs:
         echo '4. Pegar eb el navegadir la ruta http://localhost:8000.' >> INSTRUCCIONES.txt
         echo '5. Para detener el servidor, cierre la ventana del símbolo del sistema.' >> INSTRUCCIONES.txt
 
-    - name: Archivar Reporte de Allure con script de servidor e instrucciones
+    - name: Comprimir reporte de Allure, script e instrucciones en un archivo ZIP
       run: |
-         Calidad-Maven/target/site/allure-maven-plugin iniciar_servidor.bat INSTRUCCIONES.txt
+        zip -r reporte-allure-final.zip Calidad-Maven/target/site/allure-maven-plugin/ iniciar_servidor.bat INSTRUCCIONES.txt
       shell: bash
 
-    - name: Subir Reporte de Allure como artefacto
+    - name: Subir reporte de Allure final como artefacto
       uses: actions/upload-artifact@v3
       with:
         name: reporte-allure-final
