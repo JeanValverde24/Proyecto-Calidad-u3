@@ -31,22 +31,24 @@ jobs:
     - name: Build and Test with Maven
       run: mvn -B clean verify --file Calidad-Maven/pom.xml
 
-    # Add a step to generate the Allure report
-    - name: Generate Allure Report
-      run: mvn allure:report
-
     - name: Archive JaCoCo Coverage Report
       uses: actions/upload-artifact@v3
       with:
         name: jacoco-report
         path: Calidad-Maven/target/site/jacoco/
 
-    # Archive the generated Allure report
-    - name: Archive Allure Report
+    - name: Install Allure Command Line
+      run: sudo apt-get install allure
+
+    - name: Generate Allure Report
+      run: allure generate Calidad-Maven/target/allure-results --output Calidad-Maven/target/allure-report
+
+    - name: Archive Allure HTML Report
       uses: actions/upload-artifact@v3
       with:
-        name: allure-report
-        path: Calidad-Maven/target/site/allure-maven-plugin
+        name: allure-html-report
+        path: Calidad-Maven/target/allure-report
+
 
 
 
