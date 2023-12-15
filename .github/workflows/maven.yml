@@ -37,17 +37,17 @@ jobs:
         name: jacoco-report
         path: Calidad-Maven/target/site/jacoco/
 
-    - name: Install Allure Command Line
-      run: sudo apt-get install allure
-
+    # Generate Allure Report
     - name: Generate Allure Report
-      run: allure generate Calidad-Maven/target/allure-results --output Calidad-Maven/target/allure-report
+      run: mvn allure:report
 
+    # Archive the generated Allure HTML report
     - name: Archive Allure HTML Report
       uses: actions/upload-artifact@v3
       with:
         name: allure-html-report
-        path: Calidad-Maven/target/allure-report
+        path: Calidad-Maven/target/site/allure-maven-plugin
+
 
 
 
