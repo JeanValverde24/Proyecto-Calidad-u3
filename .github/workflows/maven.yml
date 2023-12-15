@@ -31,14 +31,17 @@ jobs:
     - name: Build and Test with Maven
       run: mvn -B clean verify --file Calidad-Maven/pom.xml
 
-    - name: Generate Allure Report
-      run: mvn allure:report
-
-    - name: Archive Allure HTML Report
+    - name: Archive JaCoCo Coverage Report
       uses: actions/upload-artifact@v3
       with:
-        name: allure-html-report
-        path: Calidad-Maven/target/allure-report
+        name: jacoco-report
+        path: Calidad-Maven/target/site/jacoco/
+
+    - name: Archive Allure Report
+      uses: actions/upload-artifact@v3
+      with:
+        name: allure-report
+        path: Calidad-Maven/target/allure-results
 
 
 
