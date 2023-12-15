@@ -41,7 +41,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: allure-report
-        path: Calidad-Maven/target-site/target/allure-results
+        path: Calidad-Maven/target/allure-results
 
 
 
