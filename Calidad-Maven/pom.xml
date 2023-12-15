@@ -125,7 +125,7 @@
     <artifactId>allure-maven</artifactId>
     <version>${allure.version}</version>
     <configuration>
-        <resultsDirectory>${project.build.directory}Calidad-Maven/target/allure-results</resultsDirectory>
+        <resultsDirectory>${project.build.directory}target/allure-results</resultsDirectory>
         <reportDirectory>${project.build.directory}/site/allure-maven-plugin</reportDirectory>
     </configuration>
 </plugin>
