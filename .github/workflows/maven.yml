@@ -61,7 +61,7 @@ jobs:
 
     - name: Archivar Reporte de Allure con script de servidor e instrucciones
       run: |
-        zip -r reporte-allure-final.zip Calidad-Maven/target/site/allure-maven-plugin iniciar_servidor.bat INSTRUCCIONES.txt
+         Calidad-Maven/target/site/allure-maven-plugin iniciar_servidor.bat INSTRUCCIONES.txt
       shell: bash
 
     - name: Subir Reporte de Allure como artefacto
