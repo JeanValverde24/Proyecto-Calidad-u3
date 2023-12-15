@@ -35,7 +35,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: allure-results
-        path: Calidad-Maven/target/allure-results
+        path: Calidad-Maven/allure-results
 
     - name: Archive JaCoCo Results
       uses: actions/upload-artifact@v3
