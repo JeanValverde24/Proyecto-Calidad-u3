@@ -37,17 +37,11 @@ jobs:
         name: jacoco-report
         path: Calidad-Maven/target/site/jacoco/
 
-    - name: Generate Allure Report
-      run: mvn allure:report --file Calidad-Maven/pom.xml
-
-    - name: Compress Allure HTML Report
-      run: zip -r allure-html-report.zip Calidad-Maven/target/site/allure-maven-plugin
-
-    - name: Archive Allure HTML Report ZIP
+    - name: Archive Allure Report
       uses: actions/upload-artifact@v3
       with:
-        name: allure-html-report-zip
-        path: allure-html-report.zip
+        name: allure-report
+        path: Calidad-Maven/target/allure-results
 
 
 
