@@ -55,9 +55,10 @@ jobs:
         echo 'Instrucciones para visualizar el Reporte de Allure:' > INSTRUCCIONES.txt
         echo '1. Asegurarse de que Python esté instalado y agregado a las variables de entorno PATH.' >> INSTRUCCIONES.txt
         echo '2. Descomprimir el archivo ZIP.' >> INSTRUCCIONES.txt
-        echo '3. Ejecutar el archivo iniciar_servidor.bat haciendo doble clic en él.' >> INSTRUCCIONES.txt
-        echo '4. Pegar eb el navegadir la ruta http://localhost:8000.' >> INSTRUCCIONES.txt
-        echo '5. Para detener el servidor, cierre la ventana del símbolo del sistema.' >> INSTRUCCIONES.txt
+        echo '3. Mover el archivo .bat a Calidad-Maven/target/site/allure-maven-plugin.' >> INSTRUCCIONES.txt
+        echo '4. Ejecutar el archivo iniciar_servidor.bat haciendo doble clic en él.' >> INSTRUCCIONES.txt
+        echo '5. Pegar eb el navegadir la ruta http://localhost:8000.' >> INSTRUCCIONES.txt
+        echo '6. Para detener el servidor, cierre la ventana del símbolo del sistema.' >> INSTRUCCIONES.txt
 
     - name: Comprimir reporte de Allure, script e instrucciones en un archivo ZIP
       run: |
