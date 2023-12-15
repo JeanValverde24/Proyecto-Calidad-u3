@@ -31,24 +31,17 @@ jobs:
     - name: Build and Test with Maven
       run: mvn -B clean verify --file Calidad-Maven/pom.xml
 
-    - name: Archive Allure Results
-      uses: actions/upload-artifact@v3
-      with:
-        name: allure-results
-        path: Calidad-Maven/allure-results
-
-    - name: Archive JaCoCo Results
+    - name: Archive JaCoCo Coverage Report
       uses: actions/upload-artifact@v3
       with:
         name: jacoco-report
-        path: Calidad-Maven/target/site/jacoco
+        path: Calidad-Maven/target/site/jacoco/
 
-    - name: Deploy to GitHub Pages
-      if: github.ref == 'refs/heads/main'
-      uses: peaceiris/actions-gh-pages@v3
+    - name: Archive Allure Report
+      uses: actions/upload-artifact@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./Calidad-Maven/target/site/allure-maven-plugin/
+        name: allure-report
+        path: Calidad-Maven/target-site/target/allure-results
 
 
 
